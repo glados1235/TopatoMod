@@ -6,6 +6,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.network.NetworkHooks;
 
 public class Resonance extends Entity {
 
@@ -48,6 +49,6 @@ public class Resonance extends Entity {
 
     @Override
     public Packet<?> getAddEntityPacket() {
-        return null;
+        return NetworkHooks.getEntitySpawningPacket(this);
     }
 }
