@@ -5,18 +5,19 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
-
+import org.jline.utils.Log;
 import static net.tombvali.topatomod.TopatoMod.LOGGER;
-
 public class Resonance extends Entity {
 
     public int age;
     public int value;
     public Player followingPlayer;
+
 
     public Resonance(EntityType<?> entityType, Level level) {
         super(entityType, level);
@@ -31,24 +32,15 @@ public class Resonance extends Entity {
     @Override
     public void tick() {
         super.tick();
+        System.out.println(followingPlayer);
         if(followingPlayer != null){
-            // Calculate the direction to the player
-            Vec3 direction = followingPlayer.position().subtract(position());
-            double distance = direction.length();
-            direction = direction.normalize();
-
-            // Log the distance and direction to the player
-            LOGGER.info("Distance to player: " + distance);
-            LOGGER.info("Direction to player: " + direction);
-
-            // Move towards the player with a set speed
-            double speed = 0.2; // Change this value to adjust the speed
-            Vec3 movement = direction.scale(speed * speed * 0.1);
-            setDeltaMovement(getDeltaMovement().add(movement));
-
-            // Log the current velocity and position of the entity
-            LOGGER.info("Current velocity: " + getDeltaMovement());
-            LOGGER.info("Current position: " + position());
+            Vec3 vec3 = new Vec3(this.followingPlayer.getX() - this.getX(), this.followingPlayer.getY() + (double)this.followingPlayer.getEyeHeight() / 2.0D - this.getY(), this.followingPlayer.getZ() - this.getZ());
+            double d0 = vec3.lengthSqr();
+            if (d0 < 64.0D) {
+                double d1 = 1.0D - Math.sqrt(d0) / 8.0D;
+                this.setDeltaMovement(this.getDeltaMovement().add(vec3.normalize().scale(d1 * d1 * 0.1D)));
+                this.move(MoverType.SELF, this.getDeltaMovement());
+            }
         }
     }
 
