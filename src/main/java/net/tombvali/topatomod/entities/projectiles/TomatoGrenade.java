@@ -1,6 +1,7 @@
 package net.tombvali.topatomod.entities.projectiles;
 
 
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.network.NetworkHooks;
 import net.tombvali.topatomod.entities.ModEntities;
 import net.tombvali.topatomod.item.ModItems;
 
@@ -52,6 +54,10 @@ public class TomatoGrenade extends ThrowableItemProjectile {
         this.setDeltaMovement(0,0,0);
     }
 
+    @Override
+    public Packet<?> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
 
     @Override
     public void tick() {

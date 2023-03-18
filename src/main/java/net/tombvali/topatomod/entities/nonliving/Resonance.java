@@ -1,12 +1,15 @@
 package net.tombvali.topatomod.entities.nonliving;
 
+import com.mojang.math.Vector3d;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
+import org.jline.utils.Log;
 
 public class Resonance extends Entity {
 
@@ -28,7 +31,23 @@ public class Resonance extends Entity {
     public void tick() {
         super.tick();
         if(followingPlayer != null){
-            this.moveTo(followingPlayer.position());
+            // Calculate the direction to the player
+            Vec3 direction = followingPlayer.position().subtract(position());
+            double distance = direction.length();
+            direction = direction.normalize();
+
+            // Log the distance and direction to the player
+            Log.info("Distance to player: " + distance);
+            Log.info("Direction to player: " + direction);
+
+            // Move towards the player with a set speed
+            double speed = 0.2; // Change this value to adjust the speed
+            Vec3 movement = direction.scale(speed * speed * 0.1);
+            setDeltaMovement(getDeltaMovement().add(movement));
+
+            // Log the current velocity and position of the entity
+            Log.info("Current velocity: " + getDeltaMovement());
+            Log.info("Current position: " + position());
         }
     }
 
