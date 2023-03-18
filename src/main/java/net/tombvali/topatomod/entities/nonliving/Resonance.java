@@ -32,7 +32,6 @@ public class Resonance extends Entity {
     @Override
     public void tick() {
         super.tick();
-        System.out.println(followingPlayer);
         if(followingPlayer != null){
             Vec3 vec3 = new Vec3(this.followingPlayer.getX() - this.getX(), this.followingPlayer.getY() + (double)this.followingPlayer.getEyeHeight() / 2.0D - this.getY(), this.followingPlayer.getZ() - this.getZ());
             double d0 = vec3.lengthSqr();
