@@ -3,6 +3,7 @@ package net.tombvali.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -33,6 +34,8 @@ public class ResonanceRenderer extends EntityRenderer<Resonance> {
     @Override
     public void render(Resonance resonance, float v, float v1, PoseStack stack, @NotNull MultiBufferSource multiBufferSource, int i) {
         stack.pushPose();
+        stack.translate(0, 1.5, 0);
+        stack.mulPose(Vector3f.XP.rotationDegrees(180));
         VertexConsumer vertexconsumer = ItemRenderer.getFoilBufferDirect(multiBufferSource, this.model.renderType(this.getTextureLocation(resonance)), false, false);
         this.model.renderToBuffer(stack, vertexconsumer, i, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
         stack.popPose();
