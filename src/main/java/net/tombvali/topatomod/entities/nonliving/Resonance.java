@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
+import net.tombvali.topatomod.TopatoMod;
 import org.jline.utils.Log;
 
 public class Resonance extends Entity {
@@ -41,12 +42,12 @@ public class Resonance extends Entity {
             Log.info("Direction to player: " + direction);
 
             // Move towards the player with a set speed
-            double speed = 0.2; // Change this value to adjust the speed
+            double speed = 100; // Change this value to adjust the speed
             Vec3 movement = direction.scale(speed * speed * 0.1);
             setDeltaMovement(getDeltaMovement().add(movement));
 
             // Log the current velocity and position of the entity
-            Log.info("Current velocity: " + getDeltaMovement());
+            LOGGER.info("Current velocity: " + getDeltaMovement());
             Log.info("Current position: " + position());
         }
     }

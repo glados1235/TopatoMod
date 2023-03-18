@@ -33,7 +33,7 @@ public class TopatoMod
 {
     public static final String MODID = "topatomod";
 
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public TopatoMod()
     {
