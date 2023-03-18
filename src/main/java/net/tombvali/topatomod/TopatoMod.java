@@ -25,7 +25,9 @@ import net.tombvali.topatomod.painting.ModPaintings;
 
 import net.tombvali.topatomod.world.feature.ModConfiguredFeatures;
 import net.tombvali.topatomod.world.feature.ModPlacedFeatures;
-import org.slf4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(TopatoMod.MODID)
@@ -33,7 +35,7 @@ public class TopatoMod
 {
     public static final String MODID = "topatomod";
 
-    public static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
 
     public TopatoMod()
     {

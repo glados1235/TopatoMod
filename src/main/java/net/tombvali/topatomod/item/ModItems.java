@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tombvali.topatomod.TopatoMod;
 import net.tombvali.topatomod.block.ModBlocks;
+import net.tombvali.topatomod.item.custom.ResonanceChamberItem;
 import net.tombvali.topatomod.item.custom.TomatoGrenadeItem;
 import net.tombvali.topatomod.item.custom.TomatoGrenadeLauncherItem;
 import net.tombvali.topatomod.item.custom.TopatoTotemItem;
@@ -29,6 +30,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> RESONATING_DISK = ITEMS.register("resonating_disk",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
+
+    public static final RegistryObject<Item> RESONANCE_CHAMBER = ITEMS.register("resonance_chamber",
+            () -> new ResonanceChamberItem(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
 
     public static final RegistryObject<Item> TOPATO_TOTEM = ITEMS.register("topato_totem",
             () -> new TopatoTotemItem(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB).durability(50)));
