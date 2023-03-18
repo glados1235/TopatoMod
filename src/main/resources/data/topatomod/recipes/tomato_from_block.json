@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+
+  "ingredients": [
+    {
+      "item": "topatomod:topato_block"
+    }
+  ],
+
+  "result": {
+    "item": "topatomod:tomato",
+    "count": 9
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {"model": "topatomod:block/phoenixite_ore"},
+    "lit=true": {"model": "topatomod:block/phoenixite_ore_on"}
+  },
+  "defaults": {
+    "lit": false
+  }
+
+}

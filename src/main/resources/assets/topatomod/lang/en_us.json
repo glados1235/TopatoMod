@@ -1,0 +1,40 @@
+{
+  "item.topatomod.tomato": "Tomato",
+
+  "item.topatomod.resonating_disk": "Resonating Disk",
+
+  "item.topatomod.tomato_grenade": "Tomato Grenade",
+  "item.topatomod.tomato_grenade_launcher": "Tomato Grenade Launcher",
+
+
+
+
+  "item.topatomod.celestium_ingot": "Celestium Ingot",
+  "item.topatomod.raw_celestium": "Raw Celestium",
+
+  "item.topatomod.phoenixite_ingot": "Phoenixite Ingot",
+  "item.topatomod.raw_phoenixite": "Raw Phoenixite",
+
+  "item.topatomod.stardust_ingot": "Stardust Ingot",
+  "item.topatomod.raw_stardust": "Raw Stardust",
+
+  "item.topatomod.voidstone_ingot": "Voidstone Ingot",
+  "item.topatomod.raw_voidstone": "Raw Voidstone",
+
+
+
+  "block.topatomod.topato_block": "Topato Block",
+
+  "block.topatomod.celestium_ore": "Celestium Ore",
+  "block.topatomod.deepslate_celestium_ore": "Deepslate Celestium Ore",
+
+  "block.topatomod.phoenixite_ore": "Phoenixite Ore",
+  "block.topatomod.deepslate_phoenixite_ore": "Deepslate Phoenixite Ore",
+
+  "block.topatomod.stardust_ore": "Stardust Ore",
+  "block.topatomod.deepslate_stardust_ore": "Deepslate Stardust Ore",
+
+  "block.topatomod.voidstone_ore": "Voidstone Ore",
+  "block.topatomod.deepslate_voidstone_ore": "Deepslate Voidstone Ore"
+
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G#G",
+    "#G#",
+    "G#G"
+  ],
+
+  "key": {
+    "#": {
+      "item": "topatomod:tomato"
+    },
+    "G": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+
+  "result": {
+    "item": "topatomod:tomato_grenade",
+    "count": 5
+  }
+}
