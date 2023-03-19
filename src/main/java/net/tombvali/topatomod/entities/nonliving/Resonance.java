@@ -69,9 +69,9 @@ public class Resonance extends Entity {
                 vec3 = vec3.normalize().scale(d1 * d1 * 0.1D); // scale the vector by the factor
                 this.setDeltaMovement(this.getDeltaMovement().add(vec3)); // add the vector to the entity's motion
                 this.move(MoverType.SELF, this.getDeltaMovement()); // move the entity
-                if (getTimer() >= 600) {
+                if (getTimer() >= 150) {
 
-                    if (stack == ModItems.RESONANCE_CHAMBER.get().getDefaultInstance()) {
+                    if (stack == followingPlayer.getInventory().getItem(slot)) {
                         stack.getOrCreateTag().putFloat("currentResonance",  stack.getTag().getFloat("currentResonance") + value);
                         this.remove(RemovalReason.DISCARDED);
                     }
@@ -88,7 +88,7 @@ public class Resonance extends Entity {
             this.setDeltaMovement(this.getDeltaMovement().add(vec3));
             this.move(MoverType.SELF, this.getDeltaMovement());
 
-            if (getTimer() >= 600) {
+            if (getTimer() >= 150) {
                 this.remove(RemovalReason.DISCARDED);
             }
         }
