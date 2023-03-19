@@ -37,7 +37,7 @@ public class TomatoGrenadeLauncherItem extends Item {
             tomatoGrenade.moveTo(player.position().add(0, 1, 0));
             tomatoGrenade.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.8F, 1.0F);
             level.addFreshEntity(tomatoGrenade);
-            player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 15);
+            player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 0);
             level.playSound(null, player.blockPosition(), SoundEvents.SNOWBALL_THROW, SoundSource.PLAYERS, 1, 1);
 
             player.getMainHandItem().setDamageValue(player.getMainHandItem().getDamageValue() + 1);
