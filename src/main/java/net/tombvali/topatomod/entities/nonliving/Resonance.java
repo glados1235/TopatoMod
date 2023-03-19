@@ -8,19 +8,18 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.tombvali.topatomod.item.ModItems;
-import net.tombvali.topatomod.item.custom.ResonanceChamberItem;
+
 
 import static net.tombvali.topatomod.TopatoMod.LOGGER;
 
 public class Resonance extends Entity {
 
     public int age;
-    public float value = 0.4f + this.random.nextFloat() * (2.2f - 0.4f);
+
     private final double speed = 0.5;
     public Player followingPlayer;
 
@@ -33,7 +32,7 @@ public class Resonance extends Entity {
     public void onAddedToWorld() {
         super.onAddedToWorld();
         followingPlayer = level.getNearestPlayer(this.position().x, this.position().y, this.position().z, 6, false);
-
+        float value = 0.4f + this.random.nextFloat() * (2.2f - 0.4f);
     }
 
     @Override
@@ -61,13 +60,13 @@ public class Resonance extends Entity {
                 if (age >= 600) {
 
                     if (stack == ModItems.RESONANCE_CHAMBER.get().getDefaultInstance()) {
-                        stack.getOrCreateTag().putFloat("currentResonance",  +value);
+
                         this.remove(RemovalReason.DISCARDED);
                     }
 
                 }
                 if (this.getBoundingBox().intersects(followingPlayer.getBoundingBox())) {
-                    stack.getOrCreateTag().putFloat("currentResonance",  +value);
+
                     this.remove(RemovalReason.DISCARDED);
                 }
             }

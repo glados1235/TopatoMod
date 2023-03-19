@@ -17,13 +17,6 @@ public class ResonanceChamberItem extends Item {
         super(properties);
 
     }
-    public ResonanceChamberItem(){
-
-        CompoundTag tag = new CompoundTag();
-        tag.putFloat("CustomData", 0);
-        ItemStack stack = new ItemStack(this);
-        stack.setTag(tag);
-    }
 
 
     @Override
