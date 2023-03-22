@@ -10,6 +10,7 @@ import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.tombvali.topatomod.block.custom.LivingBlock;
 import net.tombvali.topatomod.block.custom.PhoenixiteOreBlock;
 import net.tombvali.topatomod.block.custom.ResonatingShrineBlock;
 import net.tombvali.topatomod.block.custom.TomatoCropBlock;
@@ -26,7 +27,7 @@ public class ModBlocks {
 
 
     public static final  RegistryObject<Block> TOPATO_BLOCK = registerBlock("topato_block",
-            ()-> new Block(BlockBehaviour.Properties.of(Material.CLAY)), ModCreativeModeTab.TOPATOMOD_TAB);
+            ()-> new LivingBlock(BlockBehaviour.Properties.of(Material.CLAY)), ModCreativeModeTab.TOPATOMOD_TAB);
 
     public static final  RegistryObject<Block> RESONATING_SHRINE_BLOCK = registerBlock("resonating_shrine_block",
             ()-> new ResonatingShrineBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)), ModCreativeModeTab.TOPATOMOD_TAB);

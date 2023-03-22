@@ -26,7 +26,7 @@ public class Resonance extends Entity {
     private static final EntityDataAccessor<Integer> TIMER = SynchedEntityData.defineId(Resonance.class, EntityDataSerializers.INT);
 
     public float value = 0.4f + this.random.nextFloat() * (2.2f - 0.4f);
-    private final double speed = 0.5;
+    private final double speed = 0.1;
     public Player followingPlayer;
 
 
@@ -37,7 +37,7 @@ public class Resonance extends Entity {
     @Override
     public void onAddedToWorld() {
         super.onAddedToWorld();
-        followingPlayer = level.getNearestPlayer(this.position().x, this.position().y, this.position().z, 6, false);
+        followingPlayer = level.getNearestPlayer(this.position().x, this.position().y, this.position().z, 100, false);
 
     }
 
@@ -46,9 +46,9 @@ public class Resonance extends Entity {
         super.tick(); // call superclass tick method to update entity state
 
         int slot = -1;
-        this.setTimer(this.getTimer()+1);
+        this.setTimer(this.getTimer() + 1);
         if (followingPlayer != null) {
-            for(int i = 0; i < followingPlayer.getInventory().getContainerSize(); ++i) {
+            for (int i = 0; i < followingPlayer.getInventory().getContainerSize(); ++i) {
                 ItemStack itemstack1 = followingPlayer.getInventory().getItem(i);
                 if (itemstack1.is(ModItems.RESONANCE_CHAMBER.get())) {
                     slot = i;
@@ -56,30 +56,32 @@ public class Resonance extends Entity {
                 }
             }
 
-            if(slot != -1) {
+            if (slot != -1) {
                 ItemStack stack = followingPlayer.getInventory().getItem(slot);
 
-                Vec3 vec3 = new Vec3(this.followingPlayer.getX() - this.getX(),
-                        this.followingPlayer.getY() + (double) this.followingPlayer.getEyeHeight() / 2.0D - this.getY(),
+                Vec3 vec3 = new Vec3(
+                        this.followingPlayer.getX() - this.getX(),
+                        this.followingPlayer.getY() - this.getY(),
                         this.followingPlayer.getZ() - this.getZ());
-                vec3 = vec3.normalize().scale(speed);
+
 
                 double d0 = vec3.lengthSqr(); // calculate the squared length of the vector
                 double d1 = 1.0D - Math.sqrt(d0) / 8.0D; // calculate a scaling factor based on distance
                 vec3 = vec3.normalize().scale(d1 * d1 * 0.1D); // scale the vector by the factor
+                vec3 = vec3.normalize().scale(speed);
                 this.setDeltaMovement(this.getDeltaMovement().add(vec3)); // add the vector to the entity's motion
                 this.move(MoverType.SELF, this.getDeltaMovement()); // move the entity
                 if (getTimer() >= 150) {
 
-                    if (stack == followingPlayer.getInventory().getItem(slot)) {
-                        stack.getOrCreateTag().putFloat("currentResonance",  stack.getTag().getFloat("currentResonance") + value);
-                        this.remove(RemovalReason.DISCARDED);
+                    if (stack != followingPlayer.getInventory().getItem(slot)) {
+                        this.Kill(true, stack);
+                    } else {
+                        this.Kill(false, stack);
                     }
 
                 }
                 if (this.getBoundingBox().intersects(followingPlayer.getBoundingBox())) {
-                    stack.getOrCreateTag().putFloat("currentResonance",  stack.getTag().getFloat("currentResonance") + value);
-                    this.remove(RemovalReason.DISCARDED);
+                    this.Kill(true, stack);
                 }
             }
         } else {
@@ -89,13 +91,25 @@ public class Resonance extends Entity {
             this.move(MoverType.SELF, this.getDeltaMovement());
 
             if (getTimer() >= 150) {
-                this.remove(RemovalReason.DISCARDED);
+                this.Kill(false, null);
             }
         }
 
 
         // add a particle effect at the entity's current position
         level.addParticle(ParticleTypes.GLOW_SQUID_INK, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+    }
+
+
+    public void Kill(Boolean shouldReward, ItemStack stack) {
+        level.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+        if (shouldReward) {
+            stack.getOrCreateTag().putFloat("currentResonance", stack.getTag().getFloat("currentResonance") + value);
+            this.remove(RemovalReason.DISCARDED);
+        } else {
+            this.remove(RemovalReason.DISCARDED);
+        }
+
     }
 
     public int getTimer() {
@@ -111,7 +125,6 @@ public class Resonance extends Entity {
         this.entityData.define(TIMER, 0);
 
     }
-
 
 
     @Override
