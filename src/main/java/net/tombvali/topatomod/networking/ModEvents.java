@@ -33,4 +33,5 @@ public class ModEvents {
         res.moveTo(entity.position());
         level.addFreshEntity(res);
     }
+
 }
