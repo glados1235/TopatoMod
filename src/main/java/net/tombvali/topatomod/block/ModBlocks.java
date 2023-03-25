@@ -26,8 +26,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, TopatoMod.MODID);
 
 
-    public static final  RegistryObject<Block> TOPATO_BLOCK = registerBlock("topato_block",
-            ()-> new LivingBlock(BlockBehaviour.Properties.of(Material.CLAY)), ModCreativeModeTab.TOPATOMOD_TAB);
+
 
     public static final  RegistryObject<Block> RESONATING_SHRINE_BLOCK = registerBlock("resonating_shrine_block",
             ()-> new ResonatingShrineBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)), ModCreativeModeTab.TOPATOMOD_TAB);
