@@ -4,18 +4,20 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.tombvali.topatomod.entities.ModEntities;
+import net.tombvali.topatomod.entities.mobs.LostOneEntity;
 import net.tombvali.topatomod.entities.nonliving.Resonance;
 
 import static net.tombvali.topatomod.TopatoMod.MODID;
 
-
-@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEvents {
 
+/*
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         //Dead Guy
@@ -33,5 +35,14 @@ public class ModEvents {
         res.moveTo(entity.position());
         level.addFreshEntity(res);
     }
+
+ */
+
+
+    @SubscribeEvent
+    public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+        event.put(ModEntities.LOST_ONE.get(), LostOneEntity.setAttribute());
+    }
+
 
 }
