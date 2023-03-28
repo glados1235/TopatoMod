@@ -4,11 +4,13 @@ import net.minecraft.world.food.FoodProperties;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tombvali.topatomod.TopatoMod;
 import net.tombvali.topatomod.block.ModBlocks;
+import net.tombvali.topatomod.entities.ModEntities;
 import net.tombvali.topatomod.item.custom.ResonanceChamberItem;
 import net.tombvali.topatomod.item.custom.TomatoGrenadeItem;
 import net.tombvali.topatomod.item.custom.TomatoGrenadeLauncherItem;
@@ -68,6 +70,12 @@ public class ModItems {
 
     public static final RegistryObject<Item> RAW_VOIDSTONE = ITEMS.register("raw_voidstone",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
+
+
+
+    public static final RegistryObject<Item> LOST_ONE_SPAWN_EGG = ITEMS.register("lost_one_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.LOST_ONE, 375313, 679627,
+            new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
 
 
 

@@ -12,8 +12,10 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.tombvali.client.renderer.LostOneRenderer;
 import net.tombvali.client.renderer.ResonanceRenderer;
 import net.tombvali.client.renderer.TomatoGrenadeRenderer;
+import net.tombvali.client.renderer.client.models.LostOneModel;
 import net.tombvali.client.renderer.client.models.ResonanceModel;
 import net.tombvali.client.renderer.client.models.TomatoGrenadeModel;
 import net.tombvali.topatomod.block.ModBlocks;
@@ -27,6 +29,7 @@ import net.tombvali.topatomod.world.feature.ModConfiguredFeatures;
 import net.tombvali.topatomod.world.feature.ModPlacedFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -46,6 +49,7 @@ public class TopatoMod
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         ModPaintings.PAINTING_VARIANTS.register(modEventBus);
+        GeckoLib.initialize();
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerEntityRenderers);
         modEventBus.addListener(this::bakeLayers);
@@ -61,10 +65,12 @@ public class TopatoMod
     public void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers renderer) {
         renderer.registerEntityRenderer(ModEntities.TOMATO_GRENADE.get(), TomatoGrenadeRenderer::new);
         renderer.registerEntityRenderer(ModEntities.RESONANCE.get(), ResonanceRenderer::new);
+        renderer.registerEntityRenderer(ModEntities.LOST_ONE.get(), LostOneRenderer::new);
     }
     public void bakeLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(TomatoGrenadeModel.LAYER_LOCATION, TomatoGrenadeModel::createBodyLayer);
         event.registerLayerDefinition(ResonanceModel.LAYER_LOCATION, ResonanceModel::createBodyLayer);
+        event.registerLayerDefinition(LostOneModel.LAYER_LOCATION, ResonanceModel::createBodyLayer);
     }
 
 
