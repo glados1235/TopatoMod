@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -20,6 +21,7 @@ import net.tombvali.client.renderer.client.models.ResonanceModel;
 import net.tombvali.client.renderer.client.models.TomatoGrenadeModel;
 import net.tombvali.topatomod.block.ModBlocks;
 import net.tombvali.topatomod.entities.ModEntities;
+import net.tombvali.topatomod.entities.mobs.LostOneEntity;
 import net.tombvali.topatomod.entities.nonliving.Resonance;
 import net.tombvali.topatomod.item.ModItems;
 import net.tombvali.topatomod.networking.ModMessages;
@@ -53,6 +55,7 @@ public class TopatoMod
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerEntityRenderers);
         modEventBus.addListener(this::bakeLayers);
+        modEventBus.addListener(this::entityAttributeEvent);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -71,6 +74,10 @@ public class TopatoMod
         event.registerLayerDefinition(TomatoGrenadeModel.LAYER_LOCATION, TomatoGrenadeModel::createBodyLayer);
         event.registerLayerDefinition(ResonanceModel.LAYER_LOCATION, ResonanceModel::createBodyLayer);
         event.registerLayerDefinition(LostOneModel.LAYER_LOCATION, ResonanceModel::createBodyLayer);
+    }
+
+    public void entityAttributeEvent(EntityAttributeCreationEvent event) {
+        event.put(ModEntities.LOST_ONE.get(), LostOneEntity.setAttribute());
     }
 
 

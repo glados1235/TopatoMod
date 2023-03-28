@@ -30,18 +30,15 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 public class LostOneEntity  extends Monster implements IAnimatable {
     AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
-
-
-
     public LostOneEntity(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
     }
 
     public static AttributeSupplier setAttribute(){
-        return  Monster.createMonsterAttributes()
+        return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 30)
                 .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.MOVEMENT_SPEED, 0.6)
+                .add(Attributes.MOVEMENT_SPEED, 0.3F)
                 .add(Attributes.FOLLOW_RANGE, 10)
                 .add(Attributes.ATTACK_SPEED, 2).build();
     }
@@ -57,30 +54,26 @@ public class LostOneEntity  extends Monster implements IAnimatable {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
-
-
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
-        if (!(event.getLimbSwingAmount() > -0.15F && event.getLimbSwingAmount() < 0.15F)) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lost_one.walk", ILoopType.EDefaultLoopTypes.LOOP));
+        if (event.isMoving()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lost_one.walk", true));
         } else {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lost_one.idle", ILoopType.EDefaultLoopTypes.LOOP));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lost_one.idle", true));
         }
         return PlayState.CONTINUE;
     }
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 20, this::predicate));
+        data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
     }
 
     @Override
     public AnimationFactory getFactory() {
         return factory;
     }
-
-
 
     protected void playStepSound(BlockPos pos, BlockState blockState){
         this.playSound(SoundEvents.ANVIL_STEP, 0.15F, 1.0f);
@@ -91,5 +84,4 @@ public class LostOneEntity  extends Monster implements IAnimatable {
     protected SoundEvent getDeathSound() { return SoundEvents.RAVAGER_DEATH; }
 
     protected  float getSoundVolume() {return 0.35f;}
-
 }

@@ -14,10 +14,9 @@ import net.tombvali.topatomod.entities.nonliving.Resonance;
 
 import static net.tombvali.topatomod.TopatoMod.MODID;
 
-@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvents {
 
-/*
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         //Dead Guy
@@ -34,14 +33,6 @@ public class ModEvents {
         Resonance res = ModEntities.RESONANCE.get().create(level);
         res.moveTo(entity.position());
         level.addFreshEntity(res);
-    }
-
- */
-
-
-    @SubscribeEvent
-    public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-        event.put(ModEntities.LOST_ONE.get(), LostOneEntity.setAttribute());
     }
 
 
