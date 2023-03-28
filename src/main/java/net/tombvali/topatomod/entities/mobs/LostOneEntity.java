@@ -38,9 +38,9 @@ public class LostOneEntity  extends Monster implements IAnimatable {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 30)
                 .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.MOVEMENT_SPEED, 0.3F)
+                .add(Attributes.MOVEMENT_SPEED, 0.35F)
                 .add(Attributes.FOLLOW_RANGE, 10)
-                .add(Attributes.ATTACK_SPEED, 2).build();
+                .add(Attributes.ATTACK_SPEED, 1.3f).build();
     }
 
     @Override
