@@ -2,6 +2,7 @@ package net.tombvali.topatomod.entities.mobs;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -27,16 +28,14 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-import java.util.Random;
-
-public class LostOneEntity  extends Monster implements IAnimatable {
+public class LostOneEntity extends Monster implements IAnimatable {
     AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     public LostOneEntity(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
     }
 
-    public static AttributeSupplier setAttribute(){
+    public static AttributeSupplier setAttribute() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 30)
                 .add(Attributes.ATTACK_DAMAGE, 5)
@@ -50,7 +49,6 @@ public class LostOneEntity  extends Monster implements IAnimatable {
         super.tickDeath();
         level.addParticle(ParticleTypes.SMOKE, this.getX(), this.getY(), this.getZ(), 0, 1, 0);
     }
-
 
 
     @Override
@@ -77,13 +75,12 @@ public class LostOneEntity  extends Monster implements IAnimatable {
     private PlayState attackPredicate(AnimationEvent event) {
 
         int rand = 1 + random.nextInt(2);
-        if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
+        if (this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)) {
             event.getController().markNeedsReload();
-            if(rand == 1){
+            if (rand == 1) {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lost_one.attackM1", false));
                 this.swinging = false;
-            }
-            else {
+            } else {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lost_one.attackM2", false));
                 this.swinging = false;
             }
@@ -91,6 +88,7 @@ public class LostOneEntity  extends Monster implements IAnimatable {
 
         return PlayState.CONTINUE;
     }
+
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
@@ -98,21 +96,30 @@ public class LostOneEntity  extends Monster implements IAnimatable {
     }
 
 
-
     @Override
     public AnimationFactory getFactory() {
         return factory;
     }
 
-    protected void playStepSound(BlockPos pos, BlockState blockState){
+    protected void playStepSound(BlockPos pos, BlockState blockState) {
         this.playSound(SoundEvents.ANVIL_STEP, 0.15F, 1.0f);
     }
 
-    protected SoundEvent getAmbientSound() { return SoundEvents.ENDERMITE_AMBIENT; }
-    protected SoundEvent getHurtSound(DamageSource damageSourceIn) { return SoundEvents.PLAYER_HURT; }
-    protected SoundEvent getDeathSound() { return SoundEvents.RAVAGER_DEATH; }
+    protected SoundEvent getAmbientSound() {
+        return SoundEvents.ENDERMITE_AMBIENT;
+    }
 
-    protected  float getSoundVolume() {return 0.35f;}
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+        return SoundEvents.PLAYER_HURT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return SoundEvents.RAVAGER_DEATH;
+    }
+
+    protected float getSoundVolume() {
+        return 0.35f;
+    }
 
     public static class NoCreeperGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
         public NoCreeperGoal(Mob p_26060_, Class p_26061_, boolean p_26062_) {
@@ -120,12 +127,12 @@ public class LostOneEntity  extends Monster implements IAnimatable {
         }
 
         @Override
-        public boolean canUse() {
+        public void start() {
             if (target instanceof Creeper){
-                return false;
-            } else {
-                return super.canUse();
+                return;
             }
+            super.start();
         }
     }
 }
+

@@ -36,7 +36,7 @@ public class LivingBlock extends Block {
 
     public LivingBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(IS_CORE, Boolean.valueOf(true)));
+        this.registerDefaultState(this.defaultBlockState().setValue(IS_CORE, true));
         this.registerDefaultState(this.defaultBlockState().setValue(BLOCK_COUNT, 1));
     }
 
@@ -56,21 +56,18 @@ public class LivingBlock extends Block {
     @Override
     public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         super.randomTick(blockState, serverLevel, blockPos, randomSource);
-
-
-        if (blockState.getValue(IS_CORE) == true && blockState.getValue(BLOCK_COUNT) <= maxBlockCount - 1) {
+        if (blockState.getValue(IS_CORE) && blockState.getValue(BLOCK_COUNT) <= maxBlockCount - 1) {
             AABB aabb = new AABB(blockPos).inflate(maxRange);
-            List<BlockPos> nonAirNeighbors = BlockPos.betweenClosedStream(aabb).filter(pos -> !serverLevel.getBlockState(pos).isAir()).map(BlockPos::immutable).collect(Collectors.toList());
+            List<BlockPos> nonAirNeighbors = BlockPos.betweenClosedStream(aabb).filter(pos -> !serverLevel.getBlockState(pos).isAir()).map(BlockPos::immutable).toList();
             if (!nonAirNeighbors.isEmpty()) {
                 BlockPos randomNonAirBlock = nonAirNeighbors.get(new Random().nextInt(nonAirNeighbors.size()));
                 if (!randomNonAirBlock.equals(blockPos) && serverLevel.getBlockState(randomNonAirBlock).getBlock() != blockState.getBlock()) {
                     blockState = blockState.setValue(BLOCK_COUNT, blockState.getValue(BLOCK_COUNT) + 1);
                     serverLevel.setBlockAndUpdate(blockPos, blockState);
-                    serverLevel.setBlock(randomNonAirBlock, ModBlocks.DEEPSLATE_PHOENIXITE_ORE.get().defaultBlockState().setValue(this.IS_CORE, false), 3);
+                    serverLevel.setBlock(randomNonAirBlock, ModBlocks.DEEPSLATE_PHOENIXITE_ORE.get().defaultBlockState().setValue(IS_CORE, false), 3);
                     LOGGER.info(blockState.getValue(BLOCK_COUNT));
                     LOGGER.info("Deep Tick!");
                 }
-
             }
         }
     }
