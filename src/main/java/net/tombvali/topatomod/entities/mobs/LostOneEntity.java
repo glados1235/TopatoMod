@@ -1,31 +1,31 @@
 package net.tombvali.topatomod.entities.mobs;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.Attribute;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import software.bernie.geckolib3.GeckoLib;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
+
+import java.util.Random;
 
 public class LostOneEntity  extends Monster implements IAnimatable {
     AnimationFactory factory = GeckoLibUtil.createFactory(this);
@@ -38,10 +38,18 @@ public class LostOneEntity  extends Monster implements IAnimatable {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MAX_HEALTH, 30)
                 .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.MOVEMENT_SPEED, 0.35F)
+                .add(Attributes.MOVEMENT_SPEED, 0.32F)
                 .add(Attributes.FOLLOW_RANGE, 10)
                 .add(Attributes.ATTACK_SPEED, 1.3f).build();
     }
+
+    @Override
+    protected void tickDeath() {
+        super.tickDeath();
+        level.addParticle(ParticleTypes.SMOKE, this.getX(), this.getY(), this.getZ(), 0, 1, 0);
+    }
+
+
 
     @Override
     protected void registerGoals() {
@@ -52,8 +60,7 @@ public class LostOneEntity  extends Monster implements IAnimatable {
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true));
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
@@ -65,10 +72,30 @@ public class LostOneEntity  extends Monster implements IAnimatable {
         return PlayState.CONTINUE;
     }
 
+    private PlayState attackPredicate(AnimationEvent event) {
+
+        int rand = 1 + random.nextInt(2);
+        if(this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)){
+            event.getController().markNeedsReload();
+            if(rand == 1){
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lost_one.attackM1", false));
+                this.swinging = false;
+            }
+            else {
+                event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.lost_one.attackM2", false));
+                this.swinging = false;
+            }
+        }
+
+        return PlayState.CONTINUE;
+    }
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller", 0, this::predicate));
+        data.addAnimationController(new AnimationController(this, "attackController", 0, this::attackPredicate));
     }
+
+
 
     @Override
     public AnimationFactory getFactory() {

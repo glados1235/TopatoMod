@@ -37,7 +37,7 @@ public class Resonance extends Entity {
     @Override
     public void onAddedToWorld() {
         super.onAddedToWorld();
-        followingPlayer = level.getNearestPlayer(this.position().x, this.position().y, this.position().z, 100, false);
+        followingPlayer = level.getNearestPlayer(this.position().x, this.position().y, this.position().z, 12, false);
 
     }
 
@@ -83,6 +83,9 @@ public class Resonance extends Entity {
                 if (this.getBoundingBox().intersects(followingPlayer.getBoundingBox())) {
                     this.Kill(true, stack);
                 }
+            }
+            else {
+                this.Kill(false, null);
             }
         } else {
             Vec3 vec3 = new Vec3((this.random.nextDouble() - 0.5D) * 2.0D, 1.0D, (this.random.nextDouble() - 0.5D) * 2.0D);
