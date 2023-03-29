@@ -7,6 +7,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -61,7 +62,7 @@ public class LostOneEntity  extends Monster implements IAnimatable {
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true));
+        this.targetSelector.addGoal(3, new NoCreeperGoal<>(this, LivingEntity.class, true));
     }
 
     private <P extends IAnimatable> PlayState predicate(AnimationEvent<P> event) {
@@ -112,4 +113,19 @@ public class LostOneEntity  extends Monster implements IAnimatable {
     protected SoundEvent getDeathSound() { return SoundEvents.RAVAGER_DEATH; }
 
     protected  float getSoundVolume() {return 0.35f;}
+
+    public static class NoCreeperGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {
+        public NoCreeperGoal(Mob p_26060_, Class p_26061_, boolean p_26062_) {
+            super(p_26060_, p_26061_, p_26062_);
+        }
+
+        @Override
+        public boolean canUse() {
+            if (target instanceof Creeper){
+                return false;
+            } else {
+                return super.canUse();
+            }
+        }
+    }
 }
