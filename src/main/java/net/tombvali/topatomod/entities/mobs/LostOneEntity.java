@@ -18,6 +18,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.tombvali.topatomod.sounds.ModSounds;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -106,7 +107,7 @@ public class LostOneEntity extends Monster implements IAnimatable {
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENDERMITE_AMBIENT;
+        return ModSounds.LOST_ONE_AMBIENT.get();
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
@@ -114,11 +115,11 @@ public class LostOneEntity extends Monster implements IAnimatable {
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.RAVAGER_DEATH;
+        return ModSounds.LOST_ONE_DEATH.get();
     }
 
     protected float getSoundVolume() {
-        return 0.35f;
+        return 1f;
     }
 
     public static class NoCreeperGoal<T extends LivingEntity> extends NearestAttackableTargetGoal<T> {

@@ -1,0 +1,18 @@
+{
+  "lost_one_ambient": {
+    "subtitle": "sounds.topatomod.lost_one_ambient",
+    "sounds": [
+      "topatomod:lost_one_ambient1",
+      "topatomod:lost_one_ambient2",
+      "topatomod:lost_one_ambient3"
+    ]
+  },
+  "lost_one_death": {
+    "subtitle": "sounds.topatomod.lost_one_death",
+    "sounds": [
+      "topatomod:lost_one_death1",
+      "topatomod:lost_one_death2",
+      "topatomod:lost_one_death3"
+    ]
+  }
+}

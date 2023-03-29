@@ -27,6 +27,7 @@ import net.tombvali.topatomod.item.ModItems;
 import net.tombvali.topatomod.networking.ModMessages;
 import net.tombvali.topatomod.painting.ModPaintings;
 
+import net.tombvali.topatomod.sounds.ModSounds;
 import net.tombvali.topatomod.world.feature.ModConfiguredFeatures;
 import net.tombvali.topatomod.world.feature.ModPlacedFeatures;
 import org.apache.logging.log4j.LogManager;
@@ -48,6 +49,7 @@ public class TopatoMod
         ModItems.ITEMS.register(modEventBus);
         ModEntities.ENTITY_TYPE.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
+        ModSounds.SOUND_EVENTS.register(modEventBus);
         ModConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         ModPaintings.PAINTING_VARIANTS.register(modEventBus);
