@@ -3,6 +3,10 @@ package net.tombvali.topatomod;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +35,7 @@ import net.tombvali.topatomod.sounds.ModSounds;
 import net.tombvali.topatomod.world.ModBiomes;
 import net.tombvali.topatomod.world.feature.ModConfiguredFeatures;
 import net.tombvali.topatomod.world.feature.ModPlacedFeatures;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
@@ -40,7 +45,9 @@ import software.bernie.geckolib3.GeckoLib;
 @Mod(TopatoMod.MODID)
 public class TopatoMod
 {
+    public static ResourceKey<Level> SOUND_DIMENSION;
     public static final String MODID = "topatomod";
+
 
     public static final Logger LOGGER = LogManager.getLogger();
 
@@ -65,7 +72,11 @@ public class TopatoMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+
+
         event.enqueueWork(ModMessages::register);
+        SOUND_DIMENSION = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MODID, "sound_dimension"));
+
 
     }
 
