@@ -11,10 +11,13 @@ archivesBaseName = 'topatomod'
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 repositories{
+    maven { url = 'https://maven.minecraftforge.net/' }
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' }
+
 }
 dependencies{
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.40')
+    implementation fg.deobf('com.github.glitchfiend:TerraBlender-forge:1.19.2-2.0.1.136')
 }
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {

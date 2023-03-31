@@ -10,6 +10,7 @@ import net.minecraft.world.level.biome.BiomeSpecialEffects;
 import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import net.tombvali.topatomod.TopatoMod;
 import net.tombvali.topatomod.world.feature.ModPlacedFeatures;
 
