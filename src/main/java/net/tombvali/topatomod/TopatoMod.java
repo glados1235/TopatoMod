@@ -33,12 +33,16 @@ import net.tombvali.topatomod.painting.ModPaintings;
 
 import net.tombvali.topatomod.sounds.ModSounds;
 import net.tombvali.topatomod.world.ModBiomes;
+import net.tombvali.topatomod.world.SurfaceRuleData;
+import net.tombvali.topatomod.world.TestRegion;
 import net.tombvali.topatomod.world.feature.ModConfiguredFeatures;
 import net.tombvali.topatomod.world.feature.ModPlacedFeatures;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -62,6 +66,7 @@ public class TopatoMod
         ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
         ModPaintings.PAINTING_VARIANTS.register(modEventBus);
         ModBiomes.BIOMES.register(modEventBus);
+        ModBiomes.registerBiomes();
         GeckoLib.initialize();
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerEntityRenderers);
@@ -72,7 +77,14 @@ public class TopatoMod
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        event.enqueueWork(() ->
+        {
+            // Given we only add two biomes, we should keep our weight relatively low.
+            Regions.register(new TestRegion(new ResourceLocation(MODID, "overworld"), 2));
 
+            // Register our surface rules
+            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, SurfaceRuleData.makeRules());
+        });
 
         event.enqueueWork(ModMessages::register);
         SOUND_DIMENSION = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MODID, "sound_dimension"));

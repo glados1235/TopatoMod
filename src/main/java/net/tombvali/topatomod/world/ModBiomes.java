@@ -20,28 +20,29 @@ import java.util.function.Supplier;
 
 public class ModBiomes {
 
+
+    public static final  ResourceKey<Biome> TEST_BIOME = register("testbiome");
+
     public static final DeferredRegister<Biome> BIOMES =
             DeferredRegister.create(ForgeRegistries.BIOMES, TopatoMod.MODID);
 
 
-    public static Biome testBiome(){
-        MobSpawnSettings.Builder spawnSettings = new MobSpawnSettings.Builder();
-        BiomeGenerationSettings.Builder genSettings = new BiomeGenerationSettings.Builder();
-        genSettings.addFeature(50, Holder.direct(ModPlacedFeatures.PHOENIXITE_ORE_PLACED.get()));
-        return new Biome.BiomeBuilder()
-                .precipitation(Biome.Precipitation.NONE)
-                .temperature(0.7f)
-                .downfall(0)
-                .specialEffects(new BiomeSpecialEffects.Builder()
-                        .waterColor(0xF100E5FF)
-                        .fogColor(0xF100E5FF).build()).mobSpawnSettings(spawnSettings.build()).generationSettings(genSettings.build()).build();
 
+
+    public static void registerBiomes(){
+        createBiome(TEST_BIOME, OverworldBiomes::TestBiome);
     }
 
 
 
-    public static <B extends Biome>ResourceKey<Biome> createBiome(String id, Supplier<? extends B> biome) {
-        BIOMES.register(id, biome);
-        return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(TopatoMod.MODID, id));
+
+    private static ResourceKey<Biome> register(String name)
+    {
+        return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(TopatoMod.MODID, name));
+    }
+
+    public static RegistryObject<Biome> createBiome(ResourceKey<Biome> key, Supplier<Biome> biomeSupplier)
+    {
+        return BIOMES.register(key.location().getPath(), biomeSupplier);
     }
 }
