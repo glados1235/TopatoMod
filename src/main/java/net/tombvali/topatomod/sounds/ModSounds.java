@@ -15,6 +15,8 @@ public class ModSounds {
             registerSoundEvent("lost_one_ambient");
     public static final RegistryObject<SoundEvent> LOST_ONE_DEATH =
             registerSoundEvent("lost_one_death");
+    public static final RegistryObject<SoundEvent> SOUND_DIM_MOODSOUNDS =
+            registerSoundEvent("sound_dim_moodsounds");
 
 
 

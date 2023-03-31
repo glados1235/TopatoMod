@@ -14,5 +14,15 @@
       "topatomod:lost_one_death2",
       "topatomod:lost_one_death3"
     ]
+  },
+  "sound_dim_moodsounds": {
+    "subtitle": "sounds.topatomod.sound_dim_moodsounds",
+    "sounds": [
+      "topatomod:sound_dim_moodsounds1",
+      "topatomod:sound_dim_moodsounds2",
+      "topatomod:sound_dim_moodsounds2",
+      "topatomod:sound_dim_moodsounds2",
+      "topatomod:sound_dim_moodsounds2"
+    ]
   }
 }
