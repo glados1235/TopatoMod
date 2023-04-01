@@ -21,28 +21,11 @@ import java.util.function.Supplier;
 public class ModBiomes {
 
 
-    public static final  ResourceKey<Biome> TEST_BIOME = register("testbiome");
 
-    public static final DeferredRegister<Biome> BIOMES =
-            DeferredRegister.create(ForgeRegistries.BIOMES, TopatoMod.MODID);
+    public static final ResourceKey<Biome> TEST_BIOME = register("testbiome");
 
 
-
-
-    public static void registerBiomes(){
-        createBiome(TEST_BIOME, OverworldBiomes::TestBiome);
-    }
-
-
-
-
-    private static ResourceKey<Biome> register(String name)
-    {
+    private static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(TopatoMod.MODID, name));
-    }
-
-    public static RegistryObject<Biome> createBiome(ResourceKey<Biome> key, Supplier<Biome> biomeSupplier)
-    {
-        return BIOMES.register(key.location().getPath(), biomeSupplier);
     }
 }

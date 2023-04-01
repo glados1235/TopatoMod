@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
+import net.tombvali.topatomod.TopatoMod;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
 
