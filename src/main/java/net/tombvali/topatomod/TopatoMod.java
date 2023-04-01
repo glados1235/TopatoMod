@@ -4,7 +4,6 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,10 +24,9 @@ import net.tombvali.topatomod.block.ModBlocks;
 import net.tombvali.topatomod.entities.ModEntities;
 import net.tombvali.topatomod.entities.mobs.LostOneEntity;
 import net.tombvali.topatomod.item.ModItems;
-import net.tombvali.topatomod.networking.ModMessages;
+import net.tombvali.topatomod.networking.packets.ForgeNetworkHandler;
 import net.tombvali.topatomod.painting.ModPaintings;
 import net.tombvali.topatomod.sounds.ModSounds;
-import net.tombvali.topatomod.world.ModBiomes;
 import net.tombvali.topatomod.world.SurfaceRuleData;
 import net.tombvali.topatomod.world.TestRegion;
 import net.tombvali.topatomod.world.feature.ModConfiguredFeatures;
@@ -77,8 +75,7 @@ public class TopatoMod {
             // Register our surface rules
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, SurfaceRuleData.makeRules());
         });
-
-        event.enqueueWork(ModMessages::register);
+        ForgeNetworkHandler.init();
         SOUND_DIMENSION = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MODID, "sound_dimension"));
     }
 

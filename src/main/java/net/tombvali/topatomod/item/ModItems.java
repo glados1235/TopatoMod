@@ -11,10 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.tombvali.topatomod.TopatoMod;
 import net.tombvali.topatomod.block.ModBlocks;
 import net.tombvali.topatomod.entities.ModEntities;
-import net.tombvali.topatomod.item.custom.ResonanceChamberItem;
-import net.tombvali.topatomod.item.custom.TomatoGrenadeItem;
-import net.tombvali.topatomod.item.custom.TomatoGrenadeLauncherItem;
-import net.tombvali.topatomod.item.custom.TopatoTotemItem;
+import net.tombvali.topatomod.item.custom.*;
 
 public class ModItems {
 
@@ -38,6 +35,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> TOPATO_TOTEM = ITEMS.register("topato_totem",
             () -> new TopatoTotemItem(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB).durability(50)));
+
+
+    public static final RegistryObject<Item> YEETER = ITEMS.register("yeeter",
+            () -> new Yeeter(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
 
 
     public static final RegistryObject<Item> TOMATO_GRENADE = ITEMS.register("tomato_grenade",
