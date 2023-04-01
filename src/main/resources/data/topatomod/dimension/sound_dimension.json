@@ -17,30 +17,6 @@
             "depth": 0.4,
             "offset": 0.9
           }
-        },
-        {
-          "biome": "minecraft:savanna",
-          "parameters": {
-            "temperature": 0.3,
-            "humidity": 0.3,
-            "continentalness": 0.4,
-            "erosion": 0.5,
-            "weirdness": 0.8,
-            "depth": 0.2,
-            "offset": 0.6
-          }
-        },
-        {
-          "biome": "minecraft:snowy_beach",
-          "parameters": {
-            "temperature": 0.3,
-            "humidity": 0.6,
-            "continentalness": 0.5,
-            "erosion": 0.2,
-            "weirdness": 0.8,
-            "depth": 0.2,
-            "offset": 0.2
-          }
         }
       ]
     }
