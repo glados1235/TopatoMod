@@ -23,7 +23,7 @@ public class ModBiomes {
 
 
     public static final ResourceKey<Biome> TEST_BIOME = register("testbiome");
-
+    //public static final ResourceKey<Biome> THE_HALLOW = register("the_hallow");
 
     private static ResourceKey<Biome> register(String name) {
         return ResourceKey.create(Registry.BIOME_REGISTRY, new ResourceLocation(TopatoMod.MODID, name));

@@ -15,10 +15,15 @@ public class SurfaceRuleData {
 
 
     public static SurfaceRules.RuleSource TEST_BIOME = SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.TEST_BIOME), SurfaceRules.sequence(
-            SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(ModBlocks.DEEPSLATE_CELESTIUM_ORE.get().defaultBlockState())),
-            SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, SurfaceRules.sequence
-                    (SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(40, false, CaveSurface.FLOOR), SurfaceRules.state(Blocks.DIRT.defaultBlockState())),
-                            SurfaceRules.state(Blocks.STONE.defaultBlockState())))
+
+            //SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(ModBlocks.DEEPSLATE_CELESTIUM_ORE.get().defaultBlockState())),
+
+            SurfaceRules.ifTrue
+                    (SurfaceRules.UNDER_CEILING, SurfaceRules.sequence
+                            (SurfaceRules.ifTrue
+                                    (SurfaceRules.stoneDepthCheck
+                                            (40, false, CaveSurface.FLOOR), SurfaceRules.state
+                                            (Blocks.DIRT.defaultBlockState())), SurfaceRules.state(Blocks.STONE.defaultBlockState())))
 
     ));
 
@@ -30,6 +35,7 @@ public class SurfaceRuleData {
         return SurfaceRules.sequence(
 
                 SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.TEST_BIOME), TEST_BIOME)
+                //SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.THE_HALLOW), TEST_BIOME)
         );
     }
 
