@@ -4,10 +4,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -16,6 +18,7 @@ import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.tombvali.topatomod.sounds.ModSounds;
 import software.bernie.geckolib3.core.AnimationState;
@@ -27,6 +30,8 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
+
+import java.util.Random;
 
 public class LostOneEntity extends Monster implements IAnimatable {
     AnimationFactory factory = GeckoLibUtil.createFactory(this);
@@ -134,5 +139,9 @@ public class LostOneEntity extends Monster implements IAnimatable {
             super.start();
         }
     }
+    public static boolean checkSpawnRules(EntityType<LostOneEntity> type, LevelAccessor world, MobSpawnType spawnType, BlockPos pos, RandomSource rand){
+        return checkMobSpawnRules(type, world, spawnType, pos, rand);
+    }
+
 }
 
