@@ -5,6 +5,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
@@ -31,10 +32,17 @@ public class ModBlocks {
     public static final  RegistryObject<Block> RESONATING_SHRINE_BLOCK = registerBlock("resonating_shrine_block",
             ()-> new ResonatingShrineBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)), ModCreativeModeTab.TOPATOMOD_TAB);
 
-
+    public static final  RegistryObject<Block> TOPATO_BLOCK = registerBlock("topato_block",
+            ()-> new LivingBlock(BlockBehaviour.Properties.of(Material.CLAY)), ModCreativeModeTab.TOPATOMOD_TAB);
     public static final  RegistryObject<Block> TOMATO_CROP_BLOCK = BLOCKS.register("tomato_crop_block",
             ()-> new TomatoCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT )));
 
+    public static final  RegistryObject<Block> PRISM_GRASS_BLOCK = registerBlock("prism_grass_block",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)), ModCreativeModeTab.TOPATOMOD_TAB);
+    public static final  RegistryObject<Block> PRISM_DIRT_BLOCK = registerBlock("prism_dirt_block",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.DIRT)), ModCreativeModeTab.TOPATOMOD_TAB);
+    public static final  RegistryObject<Block> PRISM_STONE_BLOCK = registerBlock("prism_stone_block",
+            ()-> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().sound(SoundType.STONE)), ModCreativeModeTab.TOPATOMOD_TAB);
 
 
     public static final  RegistryObject<Block> CELESTIUM_ORE = registerBlock("celestium_ore",

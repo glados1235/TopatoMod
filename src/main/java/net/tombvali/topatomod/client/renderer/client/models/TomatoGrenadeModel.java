@@ -1,4 +1,4 @@
-package net.tombvali.client.renderer.client.models;// Made with Blockbench 4.6.4
+package net.tombvali.topatomod.client.renderer.client.models;// Made with Blockbench 4.6.4
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 

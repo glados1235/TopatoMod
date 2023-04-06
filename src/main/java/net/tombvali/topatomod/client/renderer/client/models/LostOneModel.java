@@ -1,4 +1,4 @@
-package net.tombvali.client.renderer.client.models;
+package net.tombvali.topatomod.client.renderer.client.models;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;

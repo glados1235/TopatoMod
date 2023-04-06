@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "topatomod.refmap.json",
   "mixins": [
+    "access.SpawnPlacementAccess"
   ],
   "client": [
   ],

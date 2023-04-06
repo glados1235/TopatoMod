@@ -4,9 +4,9 @@
   "precipitation": "none",
   "effects": {
     "sky_color": 0,
-    "fog_color": 1315860,
-    "water_color": 4187301,
-    "water_fog_color": 868407,
+    "fog_color": 6400,
+    "water_color": 65322,
+    "water_fog_color": 65322,
     "mood_sound": {
       "sound": "topatomod:sound_dim_moodsounds",
       "tick_delay": 2500,
@@ -21,9 +21,9 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:portal"
+        "type": "minecraft:end_rod"
       },
-      "probability": 0.1
+      "probability": 0.001
     }
   },
   "spawners": {
@@ -43,9 +43,6 @@
   "spawn_costs": {},
   "carvers": {
     "air": [
-      "topatomod:test_carver",
-      "minecraft:canyon",
-      "minecraft:canyon"
     ]
   },
   "features": [

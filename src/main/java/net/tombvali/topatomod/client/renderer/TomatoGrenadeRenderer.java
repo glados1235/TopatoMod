@@ -1,4 +1,4 @@
-package net.tombvali.client.renderer;
+package net.tombvali.topatomod.client.renderer;
 
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.tombvali.client.renderer.client.models.TomatoGrenadeModel;
+import net.tombvali.topatomod.client.renderer.client.models.TomatoGrenadeModel;
 import net.tombvali.topatomod.TopatoMod;
 import net.tombvali.topatomod.entities.projectiles.TomatoGrenade;
 import org.jetbrains.annotations.NotNull;

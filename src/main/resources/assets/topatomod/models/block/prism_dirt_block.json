@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "topatomod:block/prism_grass_block/prism_dirt_block"
+  }
+}

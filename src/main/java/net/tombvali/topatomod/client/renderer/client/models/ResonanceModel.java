@@ -1,4 +1,4 @@
-package net.tombvali.client.renderer.client.models;
+package net.tombvali.topatomod.client.renderer.client.models;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

@@ -22,7 +22,7 @@ public class ModBiomes {
 
 
 
-    public static final ResourceKey<Biome> TEST_BIOME = register("testbiome");
+    public static final ResourceKey<Biome> TEST_BIOME = register("prism_meadow");
     //public static final ResourceKey<Biome> THE_HALLOW = register("the_hallow");
 
     private static ResourceKey<Biome> register(String name) {

@@ -3,7 +3,9 @@ package net.tombvali.topatomod;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -14,16 +16,17 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.tombvali.client.renderer.LostOneRenderer;
-import net.tombvali.client.renderer.ResonanceRenderer;
-import net.tombvali.client.renderer.TomatoGrenadeRenderer;
-import net.tombvali.client.renderer.client.models.LostOneModel;
-import net.tombvali.client.renderer.client.models.ResonanceModel;
-import net.tombvali.client.renderer.client.models.TomatoGrenadeModel;
+import net.tombvali.topatomod.client.renderer.LostOneRenderer;
+import net.tombvali.topatomod.client.renderer.ResonanceRenderer;
+import net.tombvali.topatomod.client.renderer.TomatoGrenadeRenderer;
+import net.tombvali.topatomod.client.renderer.client.models.LostOneModel;
+import net.tombvali.topatomod.client.renderer.client.models.ResonanceModel;
+import net.tombvali.topatomod.client.renderer.client.models.TomatoGrenadeModel;
 import net.tombvali.topatomod.block.ModBlocks;
 import net.tombvali.topatomod.entities.ModEntities;
 import net.tombvali.topatomod.entities.mobs.LostOneEntity;
 import net.tombvali.topatomod.item.ModItems;
+import net.tombvali.topatomod.mixin.access.SpawnPlacementAccess;
 import net.tombvali.topatomod.networking.packets.ForgeNetworkHandler;
 import net.tombvali.topatomod.painting.ModPaintings;
 import net.tombvali.topatomod.sounds.ModSounds;
@@ -34,7 +37,6 @@ import net.tombvali.topatomod.world.feature.ModPlacedFeatures;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
-import terrablender.api.Regions;
 import terrablender.api.SurfaceRuleManager;
 
 
@@ -70,6 +72,7 @@ public class TopatoMod {
         event.enqueueWork(() ->
                 SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, SurfaceRuleData.makeRules()));
         ForgeNetworkHandler.init();
+        SpawnPlacementAccess.mod_register(ModEntities.LOST_ONE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, LostOneEntity::checkSpawnRules);
         SOUND_DIMENSION = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MODID, "sound_dimension"));
     }
 

@@ -29,12 +29,12 @@ public class SurfaceRuleData {
 
 
     public static SurfaceRules.RuleSource makeRules() {
-        SurfaceRules.ConditionSource isAtOrAboveWaterLevel = SurfaceRules.waterBlockCheck(-1, 0);
-        SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
+        //SurfaceRules.ConditionSource isAtOrAboveWaterLevel = SurfaceRules.waterBlockCheck(-1, 0);
+        //SurfaceRules.RuleSource grassSurface = SurfaceRules.sequence(SurfaceRules.ifTrue(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
 
         return SurfaceRules.sequence(
 
-                SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.TEST_BIOME), TEST_BIOME)
+                //SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.TEST_BIOME), TEST_BIOME)
                 //SurfaceRules.ifTrue(SurfaceRules.isBiome(ModBiomes.THE_HALLOW), TEST_BIOME)
         );
     }
