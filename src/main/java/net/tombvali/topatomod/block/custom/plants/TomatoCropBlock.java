@@ -1,4 +1,4 @@
-package net.tombvali.topatomod.block.custom;
+package net.tombvali.topatomod.block.custom.plants;
 
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;

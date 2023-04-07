@@ -3,7 +3,9 @@
   "values": [
     "topatomod:topato_block",
     "topatomod:deepslate_phoenixite_ore",
-    "topatomod:phoenixite_ore"
+    "topatomod:phoenixite_ore",
+    "topatomod:prism_stone_block",
+    "topatomod:resonating_shrine_block"
   ]
 
 }

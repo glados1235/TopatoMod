@@ -1,9 +1,9 @@
 package net.tombvali.topatomod.item;
 
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -12,6 +12,8 @@ import net.tombvali.topatomod.TopatoMod;
 import net.tombvali.topatomod.block.ModBlocks;
 import net.tombvali.topatomod.entities.ModEntities;
 import net.tombvali.topatomod.item.custom.*;
+import net.tombvali.topatomod.item.custom.armor.ModArmorMaterials;
+import net.tombvali.topatomod.item.custom.armor.StardustArmorItem;
 
 public class ModItems {
 
@@ -73,15 +75,34 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
 
 
-
     public static final RegistryObject<Item> LOST_ONE_SPAWN_EGG = ITEMS.register("lost_one_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.LOST_ONE, 375313, 679627,
-            new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
+                    new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
 
 
+    //ARMORS
 
 
+    public static final RegistryObject<Item> STARDUST_HELMET = ITEMS.register("stardust_helmet",
+            () -> new StardustArmorItem(ModArmorMaterials.STARDUST, EquipmentSlot.HEAD, new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
+    public static final RegistryObject<Item> STARDUST_CHESTPLATE = ITEMS.register("stardust_chestplate",
+            () -> new StardustArmorItem(ModArmorMaterials.STARDUST, EquipmentSlot.CHEST, new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
+    public static final RegistryObject<Item> STARDUST_LEGGINGS = ITEMS.register("stardust_leggings",
+            () -> new StardustArmorItem(ModArmorMaterials.STARDUST, EquipmentSlot.LEGS, new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
+    public static final RegistryObject<Item> STARDUST_BOOTS = ITEMS.register("stardust_boots",
+            () -> new StardustArmorItem(ModArmorMaterials.STARDUST, EquipmentSlot.FEET, new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
 
+    //TOOLS
 
+    public static final RegistryObject<Item> STARDUST_SWORD = ITEMS.register("stardust_sword",
+            () -> new SwordItem(ModToolTiers.STARDUST, 5, 4, new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB).stacksTo(1)));
 
+    public static final RegistryObject<Item> STARDUST_PICKAXE = ITEMS.register("stardust_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.STARDUST, 2, 2, new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB).stacksTo(1)));
+
+    public static final RegistryObject<Item> STARDUST_SHOVEL = ITEMS.register("stardust_shovel",
+            () -> new ShovelItem(ModToolTiers.STARDUST, 1, 2, new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB).stacksTo(1)));
+
+    public static final RegistryObject<Item> STARDUST_AXE = ITEMS.register("stardust_axe",
+            () -> new AxeItem(ModToolTiers.STARDUST, 4, 3, new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB).stacksTo(1)));
 }

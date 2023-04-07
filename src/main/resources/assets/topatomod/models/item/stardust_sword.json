@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "topatomod:item/tools/stardust_sword"
+  }
+}

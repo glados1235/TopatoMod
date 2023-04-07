@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/tinted_cross",
+  "textures": {
+    "cross": "topatomod:block/prism_lilies"
+  },
+  "render_type": "cutout"
+}

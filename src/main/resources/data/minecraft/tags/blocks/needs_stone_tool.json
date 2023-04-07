@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "topatomod:topato_block"
+    "topatomod:topato_block",
+    "topatomod:prism_stone_block"
   ]
 
 }

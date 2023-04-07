@@ -72,8 +72,13 @@
       "minecraft:ore_copper",
       "minecraft:ore_emerald"
     ],
-    [],
-    [],
+    [
+
+    ],
+    [
+      "topatomod:fire_bloom_placed_fearure",
+      "topatomod:prism_lilies_placed_fearure"
+    ],
     [],
     []
   ]

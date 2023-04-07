@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/tinted_cross",
+  "textures": {
+    "cross": "topatomod:block/fire_bloom"
+  },
+  "render_type": "cutout"
+}

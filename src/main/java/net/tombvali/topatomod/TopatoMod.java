@@ -72,6 +72,7 @@ public class TopatoMod {
         event.enqueueWork(() ->
                 SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, SurfaceRuleData.makeRules()));
         ForgeNetworkHandler.init();
+
         SpawnPlacementAccess.mod_register(ModEntities.LOST_ONE.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, LostOneEntity::checkSpawnRules);
         SOUND_DIMENSION = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MODID, "sound_dimension"));
     }
