@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.tombvali.topatomod.client.renderer.client.models.LostOneModel;
 import net.tombvali.topatomod.TopatoMod;
-import net.tombvali.topatomod.entities.mobs.LostOneEntity;
+import net.tombvali.topatomod.item.entities.mobs.LostOneEntity;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 

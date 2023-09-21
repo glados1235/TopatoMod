@@ -1,4 +1,4 @@
-package net.tombvali.topatomod.entities.nonliving;
+package net.tombvali.topatomod.item.entities.nonliving;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -11,21 +11,16 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
-import net.tombvali.topatomod.entities.projectiles.TomatoGrenade;
 import net.tombvali.topatomod.item.ModItems;
-import net.tombvali.topatomod.item.custom.ResonanceChamberItem;
-
-import static net.tombvali.topatomod.TopatoMod.LOGGER;
 
 public class Resonance extends Entity {
 
     private static final EntityDataAccessor<Integer> TIMER = SynchedEntityData.defineId(Resonance.class, EntityDataSerializers.INT);
 
-    public float value = 0.4f + this.random.nextFloat() * (2.2f - 0.4f);
+    public float value = 0.4f + this.random.nextFloat() * (20 - 5);
     private final double speed = 0.1;
     public Player followingPlayer;
 

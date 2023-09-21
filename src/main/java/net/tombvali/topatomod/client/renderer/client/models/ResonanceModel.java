@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.tombvali.topatomod.TopatoMod;
-import net.tombvali.topatomod.entities.nonliving.Resonance;
+import net.tombvali.topatomod.item.entities.nonliving.Resonance;
 
 public class ResonanceModel extends EntityModel<Resonance> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor

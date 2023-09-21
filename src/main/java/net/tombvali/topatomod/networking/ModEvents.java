@@ -3,14 +3,11 @@ package net.tombvali.topatomod.networking;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.tombvali.topatomod.entities.ModEntities;
-import net.tombvali.topatomod.entities.mobs.LostOneEntity;
-import net.tombvali.topatomod.entities.nonliving.Resonance;
+import net.tombvali.topatomod.item.entities.ModEntities;
+import net.tombvali.topatomod.item.entities.nonliving.Resonance;
 
 import static net.tombvali.topatomod.TopatoMod.MODID;
 

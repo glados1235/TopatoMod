@@ -1,4 +1,4 @@
-package net.tombvali.topatomod.entities.mobs;
+package net.tombvali.topatomod.item.entities.mobs;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -30,8 +30,6 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
-
-import java.util.Random;
 
 public class LostOneEntity extends Monster implements IAnimatable {
     AnimationFactory factory = GeckoLibUtil.createFactory(this);

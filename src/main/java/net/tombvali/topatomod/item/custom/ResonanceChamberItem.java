@@ -16,8 +16,6 @@ import static net.tombvali.topatomod.TopatoMod.LOGGER;
 
 public class ResonanceChamberItem extends Item {
 
-    public static final float resonanceCapacity = 100f;
-
 
     public ResonanceChamberItem(Properties properties) {
         super(properties);
@@ -31,7 +29,10 @@ public class ResonanceChamberItem extends Item {
         CompoundTag tag = stack.getTag();
         if (tag != null && tag.contains("currentResonance")) {
             float currentResonance = tag.getFloat("currentResonance");
-            //LOGGER.info("currentResonance | " + currentResonance);
+            if(stack.getTag().getFloat("currentResonance") < 0){
+                stack.getTag().putFloat("currentResonance", 0);
+            }
+            LOGGER.info("currentResonance | " + currentResonance);
         }
         else {stack.getOrCreateTag().putFloat("currentResonance",  0);}
     }

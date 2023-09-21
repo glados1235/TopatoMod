@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.tombvali.topatomod.client.renderer.client.models.TomatoGrenadeModel;
 import net.tombvali.topatomod.TopatoMod;
-import net.tombvali.topatomod.entities.projectiles.TomatoGrenade;
+import net.tombvali.topatomod.item.entities.projectiles.TomatoGrenade;
 import org.jetbrains.annotations.NotNull;
 
 public class TomatoGrenadeRenderer extends EntityRenderer<TomatoGrenade> {

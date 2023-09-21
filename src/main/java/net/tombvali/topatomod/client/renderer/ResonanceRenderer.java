@@ -12,7 +12,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.tombvali.topatomod.client.renderer.client.models.ResonanceModel;
 import net.tombvali.topatomod.TopatoMod;
-import net.tombvali.topatomod.entities.nonliving.Resonance;
+import net.tombvali.topatomod.item.entities.nonliving.Resonance;
 import org.jetbrains.annotations.NotNull;
 
 public class ResonanceRenderer extends EntityRenderer<Resonance> {

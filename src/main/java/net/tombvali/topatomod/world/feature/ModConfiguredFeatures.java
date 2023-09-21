@@ -21,8 +21,8 @@ public class ModConfiguredFeatures {
             DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, TopatoMod.MODID);
 
     public static final Supplier<List<OreConfiguration.TargetBlockState>> OVERWORLD_PHOENIXITE_ORE = Suppliers.memoize(() -> List.of(
-            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.PHOENIXITE_ORE.get().defaultBlockState()),
-            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_PHOENIXITE_ORE.get().defaultBlockState())));
+            OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModBlocks.STARDUST_ORE.get().defaultBlockState()),
+            OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModBlocks.DEEPSLATE_STARDUST_ORE.get().defaultBlockState())));
 
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> PHOENIXITE_ORE = CONFIGURED_FEATURES.register("phoenixite_ore",

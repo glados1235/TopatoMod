@@ -12,7 +12,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.tombvali.topatomod.TopatoMod;
-import net.tombvali.topatomod.entities.projectiles.TomatoGrenade;
+import net.tombvali.topatomod.item.entities.projectiles.TomatoGrenade;
 
 public class TomatoGrenadeModel extends EntityModel<TomatoGrenade> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor

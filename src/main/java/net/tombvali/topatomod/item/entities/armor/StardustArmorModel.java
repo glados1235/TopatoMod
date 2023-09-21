@@ -1,4 +1,4 @@
-package net.tombvali.topatomod.entities.armor;
+package net.tombvali.topatomod.item.entities.armor;
 
 import net.minecraft.resources.ResourceLocation;
 import net.tombvali.topatomod.TopatoMod;

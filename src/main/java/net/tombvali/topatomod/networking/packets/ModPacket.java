@@ -13,7 +13,7 @@ import java.util.function.Function;
 
 public interface ModPacket {
     Map<String, Handler<?>> S2C_PACKETS = Util.make(new HashMap<>(), map -> {
-        map.put("yeet_packet", new Handler<>(YeetPacket.class, PacketDirection.SERVER_TO_CLIENT, YeetPacket::write, YeetPacket::new, YeetPacket::handle));
+
     });
 
 

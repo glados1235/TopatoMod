@@ -1,4 +1,4 @@
-package net.tombvali.topatomod.entities;
+package net.tombvali.topatomod.item.entities;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -7,9 +7,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraftforge.registries.RegistryObject;
 import net.tombvali.topatomod.TopatoMod;
-import net.tombvali.topatomod.entities.mobs.LostOneEntity;
-import net.tombvali.topatomod.entities.nonliving.Resonance;
-import net.tombvali.topatomod.entities.projectiles.TomatoGrenade;
+import net.tombvali.topatomod.item.entities.mobs.LostOneEntity;
+import net.tombvali.topatomod.item.entities.nonliving.Resonance;
+import net.tombvali.topatomod.item.entities.projectiles.TomatoGrenade;
 
 public class ModEntities {
 

@@ -4,7 +4,6 @@ import java.util.function.Consumer;
 
 import javax.annotation.Nullable;
 
-import net.tombvali.topatomod.entities.armor.StardustArmorRenderer;
 import org.jetbrains.annotations.NotNull;
 
 import net.minecraft.client.model.HumanoidModel;

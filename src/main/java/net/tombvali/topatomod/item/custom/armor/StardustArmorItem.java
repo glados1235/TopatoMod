@@ -1,25 +1,19 @@
 package net.tombvali.topatomod.item.custom.armor;
 
-import com.mojang.blaze3d.shaders.Effect;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.decoration.ArmorStand;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.tombvali.topatomod.item.ModCreativeModeTab;
 import net.tombvali.topatomod.item.ModItems;
-import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -27,9 +21,6 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.item.GeoArmorItem;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class StardustArmorItem extends GeoArmorItem implements IAnimatable {
 
@@ -43,8 +34,26 @@ public class StardustArmorItem extends GeoArmorItem implements IAnimatable {
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         super.onArmorTick(stack, level, player);
+        int slot = -1;
         if(hasFullSuitOfArmorOn(player) && hasCorrectArmorOn(this.material, player) && player.isShiftKeyDown()){
-            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 1 * 20, 4));
+            for (int i = 0; i < player.getInventory().getContainerSize(); ++i) {
+                ItemStack itemstack1 = player.getInventory().getItem(i);
+                if (itemstack1.is(ModItems.RESONANCE_CHAMBER.get())) {
+                    slot = i;
+                    break;
+                }
+            }
+
+            if (slot != -1) {
+                ItemStack targetStack = player.getInventory().getItem(slot);
+                if(targetStack.getTag().getFloat("currentResonance") > 0){
+                    targetStack.getTag().putFloat("currentResonance", targetStack.getTag().getFloat("currentResonance") - 0.05f);
+                    player.heal(0.02f);
+                }
+
+            }
+
+
         }
     }
 

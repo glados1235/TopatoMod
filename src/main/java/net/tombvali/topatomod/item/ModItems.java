@@ -10,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tombvali.topatomod.TopatoMod;
 import net.tombvali.topatomod.block.ModBlocks;
-import net.tombvali.topatomod.entities.ModEntities;
+import net.tombvali.topatomod.item.entities.ModEntities;
 import net.tombvali.topatomod.item.custom.*;
 import net.tombvali.topatomod.item.custom.armor.ModArmorMaterials;
 import net.tombvali.topatomod.item.custom.armor.StardustArmorItem;
@@ -39,8 +39,6 @@ public class ModItems {
             () -> new TopatoTotemItem(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB).durability(50)));
 
 
-    public static final RegistryObject<Item> YEETER = ITEMS.register("yeeter",
-            () -> new Yeeter(new Item.Properties().tab(ModCreativeModeTab.TOPATOMOD_TAB)));
 
 
     public static final RegistryObject<Item> TOMATO_GRENADE = ITEMS.register("tomato_grenade",

@@ -1,4 +1,4 @@
-package net.tombvali.topatomod.entities.armor;
+package net.tombvali.topatomod.item.entities.armor;
 
 import net.tombvali.topatomod.item.custom.armor.StardustArmorItem;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
